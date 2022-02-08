@@ -7,6 +7,12 @@ const inputEls = document.querySelectorAll("input");
 const allCards = document.querySelectorAll("card-panel");
 const containerDiv = document.querySelector(".container");
 
+
+function init() {
+    loadSearchedLocation();
+}
+
+
 // event listeners
 searchBtn.addEventListener("click", getInput);
 
@@ -45,6 +51,37 @@ async function getLocation(name) {
         displayInfo(data);
     }
 }
+
+getLocation = localStorage.getItem("locationSearchedObjects");
+
+locationSearchedObjectsArray = JSON.parse(locationSearchedObjectsArray);
+//Display Searched Location list 
+if (locationSearchedObjectsArray) {
+    locationSearchedObjectsArray.forEach(function (object) {
+        var newSearchedLocation = $("<a>");
+        newSearchedLocation.attr("href", "#");
+        newSearchedLocation.attr("searchedLocation", object.location);
+        newSearchedLocation.attr(
+            "class",
+            "list-group-item list-group-item-action list-group-item-light listItemSearchedLocation"
+        );
+        newSearchedLocation.text(object.location);
+        $(".listSearchedLocation").append(newSearchedLocation);
+    });
+}
+
+// Save searched cities array and data to local storage
+var locationSearchedObjectsArrayString = JSON.stringify(
+    locationSearchedObjectsArray
+);
+localStorage.setItem(
+    "searchedCitiesObjects",
+    locationSearchedObjectsArrayString
+);
+
+
+
+
 
 // get country name by passing in user input data -- old version
 // function getLocation(name) {
