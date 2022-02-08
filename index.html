@@ -69,14 +69,27 @@
       </a>
     </div>
 
-    <form class="search-box">
-      <input type="text" id="search-location">
-      <a class="search-btn" href="#">
-        <a href="#" class="btn btn-large blue-grey white-text">Search</a>
+    <form id="input">
+      <input type="text" id="search" autocomplete="off">
+      <!-- radio -->
+      <p class="center left">
+        <label>
+          <input name="country" class="with-gap" id="country" type="radio"/>
+          <span>Country</span>
+        </label>
+      </p>
+      <p class=>
+        <label>
+          <input name="capital" class="with-gap" id="capital" type="radio" />
+          <span>Capital</span>
+        </label>
+      </p>
+      <!-- end radio -->
+      <button btn class="search-btn btn btn-large blue-grey white-text" id="search">Search</button>
     </form>
   </section>
 
-
+  <div class="center append-div"><h4></h4></div>
   <!-- Section: Icon Boxes -->
   <section class="section section-icons center">
     <!-- container class centers content -->
@@ -85,37 +98,33 @@
         <div class="col s12 m3">
           <!-- weather card -->
           <div class="card-panel">
-            <!-- TODO: we have to choose font-awesome buttons unless we are inserting weather image like in our HW. "fa-3x" refers to size of fontawesome icon, deep-purple-text color -->
             <i class="fa-3x deep-purple-text text-darken-2"></i>
             <h5 class="grey-text text-darken-4">Weather</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
+            <p class="weather">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
           </div>
         </div>
         <div class="col s12 m3">
           <!-- flag card -->
-          <!-- TODO: again choose font-awesome buttons/use API flag image to display here? -->
           <div class="card-panel">
-            <i class="fa-3x deep-purple-text text-darken-2"></i>
-            <h5 class="grey-text text-darken-4">Flag</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
+            <!-- <i class="fa-3x deep-purple-text text-darken-2"></i>
+            <h5 class="grey-text text-darken-4">Flag</h5> -->
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p> -->
           </div>
         </div>
         <div class="col s12 m3">
           <!-- currency card -->
-          <!-- TODO: same as above, choose button -->
           <div class="card-panel">
             <i class="fa-3x deep-purple-text text-darken-2"></i>
             <h5 class="grey-text text-darken-4">Currency</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
+            <p class="currency">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
           </div>
         </div>
         <div class="col s12 m3">
           <!-- language card -->
-          <!-- TODO: same as above, choose button -->
           <div class="card-panel">
             <i class="fa-3x deep-purple-text text-darken-2"></i>
             <h5 class="grey-text text-darken-4">Language</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
+            <p class="language">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, suscipit!</p>
           </div>
         </div>
       </div>
@@ -142,7 +151,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="assets/script.js">
+  <script src="./GroupProjectRepo/assets/script.js">
 
   </script>
 </body>
