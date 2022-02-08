@@ -1,5 +1,5 @@
 const searchBtn = document.getElementById('search');
-const form = document.getElementById('input')
+const form = document.getElementById('search-location')
 const moreInfoBtn = document.getElementById('more-information');
 searchBtn.addEventListener('click', getInput);
 const countryRadioEl = document.getElementById('country');
@@ -9,16 +9,16 @@ const allCards = document.querySelectorAll('card-panel');
 const containerDiv = document.querySelector('.container')
 
 
-
 // add modal for alert message, or jquery modal
 // add .catch
 
 
 function getInput(e) {
-    form.innerText = ""
-    // console.log('working')
+    // form.innerText = ""
+    console.log('working')
     e.preventDefault();
-    input = form.value.trim();
+    input = form.value;
+    console.log(input);
     // check which input is checked
     // console.log(countryRadioEl.checked) 
     // console.log(capitalRadioEl.checked)
@@ -81,10 +81,10 @@ function getLocationCapital(name) {
 const appendDiv = document.querySelector('.append-div');
 const countryHeaderEl = document.createElement('h3');
 const populationHeaderEl = document.createElement('h5');
-const capitalEl = document.querySelector('.flag');
+const capitalEl = document.querySelector('.capital');
 const currencyEl = document.querySelector('.currency');
 const languageEl = document.querySelector('.language');
-const sectionContainer = document.querySelector('section');
+const sectionContainer = document.querySelector('.section-icons');
 sectionContainer.style.display = 'none';
 
 function displayInfo(data) {
@@ -104,7 +104,7 @@ function displayInfo(data) {
     // console.log(data[0].languages);
 
     // more information button is displayed with results
-    moreInfoBtn.classList.remove("d-none");
+    // moreInfoBtn.classList.remove("d-none");
     // containerDiv.classList.remove("d-none");
     sectionContainer.style.display = 'block';
     // when clicking more info button, redirects to a wiki page with more information about location

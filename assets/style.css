@@ -151,7 +151,7 @@ header .navigation .nav-links a:hover:before{
     margin: 0 auto;
 }
 
-#input input[type="text"]{
+#input [type="text"]{
     position: relative;
     width: 100%;
     padding: 20px;
