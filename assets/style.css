@@ -145,13 +145,13 @@ header .navigation .nav-links a:hover:before{
 }
 
 /* transparent search box */
-.search-box{
+#input{
     z-index: 999;
     width: 50%;
     margin: 0 auto;
 }
 
-.search-box input[type="text"]{
+#input [type="text"]{
     position: relative;
     width: 100%;
     padding: 20px;
@@ -165,7 +165,7 @@ header .navigation .nav-links a:hover:before{
     font-size: 18px;
 }
 
-.search-box .btn{
+#input .btn{
     position: relative;
     left: 45%;
 }
