@@ -6,55 +6,16 @@ const capitalRadioEl = document.getElementById("capital");
 const inputEls = document.querySelectorAll("input");
 const allCards = document.querySelectorAll("card-panel");
 const containerDiv = document.querySelector(".container");
+// locationSearchedObjectsArray = [];
 
 
+/* 
 function init() {
     loadSearchedLocation();
 }
-
-
-// event listeners
-searchBtn.addEventListener("click", getInput);
-
-function getInput(e) {
-    // console.log('working')
-    e.preventDefault();
-    input = form.value;
-    console.log(input);
-    // check which input is checked
-    if (input && countryRadioEl.checked) {
-        getLocation(input);
-    } else if (input && capitalRadioEl.checked) {
-        getLocationCapital(input);
-    } else {
-        showAlert(
-            "Please enter a valid location name and select country or capital"
-        );
-    }
-    // deselect checked radio selection
-    deselectAnswers();
-}
-
-function deselectAnswers() {
-    // for each answer element, deselect answer checked option
-    inputEls.forEach((inputEls) => (inputEls.checked = false));
-}
-// get country name by passing in user input data -- async/await to clean up previous fetch call
-async function getLocation(name) {
-    const response = await fetch(`https://restcountries.com/v3.1/name/` + name);
-    const data = await response.json();
-    console.log(data);
-    if (!response.ok) {
-        sectionContainer.style.display = "none";
-        showAlert("Country/Capital not found, please try again.", 'red');
-    } else {
-        displayInfo(data);
-    }
-}
-
 getLocation = localStorage.getItem("locationSearchedObjects");
 
-locationSearchedObjectsArray = JSON.parse(locationSearchedObjectsArray);
+locationSearchedObjects = JSON.parse(locationSearchedObjectsArray);
 //Display Searched Location list 
 if (locationSearchedObjectsArray) {
     locationSearchedObjectsArray.forEach(function (object) {
@@ -78,9 +39,75 @@ localStorage.setItem(
     "searchedCitiesObjects",
     locationSearchedObjectsArrayString
 );
+*/
 
 
 
+// event listeners
+searchBtn.addEventListener("click", getInput);
+
+function getInput(e) {
+    // console.log('working')
+    e.preventDefault();
+    input = form.value;
+    console.log(input);
+    // check which input is checked
+    if (input && countryRadioEl.checked) {
+        getLocation(input);
+        searchWeather(input);
+    } else if (input && capitalRadioEl.checked) {
+        getLocationCapital(input);
+        searchWeather(input);
+    } else {
+        showAlert(
+            "Please enter a valid location name and select country or capital"
+        );
+    }
+    // deselect checked radio selection
+    deselectAnswers();
+}
+
+// search weather for desired location
+var APIkey = "&units=imperial&appid=e96c7cdf8719334c7ad87ba089d635e4"
+async function searchWeather(location) {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}${APIkey}`);
+    const data = await response.json();
+    console.log(data);
+    displayWeather(data);
+}
+
+// weather elements within card
+const weatherTempEl = document.querySelector('.weather1')
+const weatherWindSpeedEl = document.querySelector('.weather2')
+const weatherHumidityEl = document.querySelector('.weather3')
+const weatherIconEl = document.querySelector('.weathericon')
+// display weather data within card
+function displayWeather(currentWeather) {
+    weatherTempEl.innerText = "Temperature: " + Math.floor(currentWeather.main.temp) + " °F";
+    weatherWindSpeedEl.innerText = "WindSpeed: " + Math.floor(currentWeather.wind.speed) + "mph, Direction: " +
+    currentWeather.wind.deg +
+    "°";
+    weatherHumidityEl.innerText = "Humidity: " + currentWeather.main.humidity + " %";
+    weatherIconEl.setAttribute('src', "https://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png")
+}
+
+
+function deselectAnswers() {
+    // for each answer element, deselect answer checked option
+    inputEls.forEach((inputEls) => (inputEls.checked = false));
+}
+// get country name by passing in user input data -- async/await to clean up previous fetch call
+async function getLocation(name) {
+    const response = await fetch(`https://restcountries.com/v3.1/name/` + name);
+    const data = await response.json();
+    console.log(data);
+    if (!response.ok) {
+        sectionContainer.style.display = "none";
+        showAlert("Country/Capital not found, please try again.", 'red');
+    } else {
+        displayInfo(data);
+    }
+}
 
 
 // get country name by passing in user input data -- old version
