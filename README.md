@@ -3,6 +3,8 @@
 
 ## Description
 
+Deployed link: https://average-android.github.io/GroupProjectRepo/
+
 This project is made with HTML, CSS/Materialize, and Javascript. When typing in a desired location and selecting the "Country" or "Capital" radio button, the application provides quick country/capital stats and the current weather in that location. It is aimed towards people finding new destinations to travel to who want a brief overview of a country.  
 Weather data is obtained from OpenWeather API, country and capital data is from REST Countries API.
 
